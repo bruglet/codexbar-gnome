@@ -5,6 +5,12 @@
     <value nick="remaining" value="1"/>
   </enum>
 
+  <enum id="org.gnome.shell.extensions.codexbar.PanelDisplay">
+    <value nick="compact" value="0"/>
+    <value nick="primary-secondary" value="1"/>
+    <value nick="full" value="2"/>
+  </enum>
+
   <schema id="org.gnome.shell.extensions.codexbar" path="/org/gnome/shell/extensions/codexbar/">
     <key name="refresh-interval" type="i">
       <default>15</default>
@@ -17,6 +23,10 @@
     <key name="display-mode" enum="org.gnome.shell.extensions.codexbar.DisplayMode">
       <default>'remaining'</default>
       <summary>Whether to show used or remaining quota</summary>
+    </key>
+    <key name="panel-display" enum="org.gnome.shell.extensions.codexbar.PanelDisplay">
+      <default>'full'</default>
+      <summary>How much usage information to show for providers in the panel</summary>
     </key>
     <key name="first-run" type="b">
       <default>true</default>

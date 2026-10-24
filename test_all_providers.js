@@ -337,6 +337,16 @@ const panelUsage = {
   tertiary: { usedPercent: 50, windowSeconds: 7 * 24 * 3600 },
 };
 const panelChecks = [
+  [formatPanelText(panelUsage, "used", 0, tr, "compact"), "3%"],
+  [formatPanelText(panelUsage, "remaining", 0, tr, "compact"), "97%"],
+  [formatPanelText(panelUsage, "used", 0, tr, "primary-secondary"), "5h 3% · 7d 22%"],
+  [formatPanelText(panelUsage, "remaining", 0, tr, "primary-secondary"), "5h 97% · 7d 78%"],
+  [formatPanelText(panelUsage, "used", 0, tr, "full"), "5h 3% · 7d 22% in 3h 15min"],
+  [formatPanelText(null, "used", 0, tr, "compact"), ""],
+  [formatPanelText({ secondary: panelUsage.secondary }, "used", 0, tr, "compact"), ""],
+  [formatPanelText({ primary: { usedPercent: 0, windowSeconds: 3600 } }, "remaining", 0, tr, "compact"), "100%"],
+  [formatPanelText({ primary: { usedPercent: 35, windowSeconds: 24 * 3600 } }, "used", 0, tr, "compact"), "35%"],
+  [formatPanelText({ primary: { usedPercent: 0, resetDescription: "$7.53 remaining" } }, "used", 0, tr, "compact"), "$7.53"],
   [formatPanelText(panelUsage, "used"), "5h 3% · 7d 22% in 3h 15min"],
   [formatPanelText(panelUsage, "remaining"), "5h 97% · 7d 78% in 3h 15min"],
   [formatPanelText(panelUsage, "used", 3 * 3600 + 5 * 60), "5h 3% · 7d 22% in 10min"],

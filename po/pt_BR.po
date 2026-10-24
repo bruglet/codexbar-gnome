@@ -612,3 +612,19 @@ msgstr "Expira em %s"
 #, javascript-format
 msgid " in %s"
 msgstr " em %s"
+
+#: prefs.js:437
+msgid "Panel Display"
+msgstr "Exibição no painel"
+
+#: prefs.js:439
+msgid "Compact (primary only)"
+msgstr "Compacta (somente principal)"
+
+#: prefs.js:439
+msgid "Primary + Secondary"
+msgstr "Principal + Secundária"
+
+#: prefs.js:439
+msgid "Full (including reset)"
+msgstr "Completa (inclui a redefinição)"

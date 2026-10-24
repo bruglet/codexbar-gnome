@@ -165,6 +165,7 @@ export default class CodexBarExtension extends Extension {
       "changed::providers", () => this._onSettingsChanged(),
       "changed::refresh-interval", () => this._onSettingsChanged(),
       "changed::display-mode", () => this._updateUI(),
+      "changed::panel-display", () => this._updatePanel(),
       "changed::show-logos", () => this._updateUI(),
       "changed::show-pacing-info", () => this._updateUI(),
       "changed::show-provider-details", () => this._updateUI(),
@@ -586,6 +587,7 @@ export default class CodexBarExtension extends Extension {
     );
 
     const displayMode = this._settings.get_string("display-mode");
+    const panelDisplay = this._settings.get_string("panel-display");
     shown.forEach(({ provider, entry }) => {
       const segment = new St.BoxLayout({
         orientation: Clutter.Orientation.HORIZONTAL,
@@ -604,7 +606,7 @@ export default class CodexBarExtension extends Extension {
       else if (entry.error) text = "!";
       else {
         const elapsed = (Date.now() - (entry.fetchedAt || Date.now())) / 1000;
-        text = formatPanelText(entry.data?.usage, displayMode, elapsed, _) || "–";
+        text = formatPanelText(entry.data?.usage, displayMode, elapsed, _, panelDisplay) || "–";
       }
       if (!logo) text = `${provider.name} ${text}`;
 

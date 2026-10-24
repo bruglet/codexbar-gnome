@@ -588,3 +588,19 @@ msgstr ""
 #, javascript-format
 msgid " in %s"
 msgstr ""
+
+#: prefs.js:437
+msgid "Panel Display"
+msgstr ""
+
+#: prefs.js:439
+msgid "Compact (primary only)"
+msgstr ""
+
+#: prefs.js:439
+msgid "Primary + Secondary"
+msgstr ""
+
+#: prefs.js:439
+msgid "Full (including reset)"
+msgstr ""

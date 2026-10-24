@@ -161,11 +161,11 @@ export const localizeDetail = (text, tr) => {
 };
 
 /** Panel text: "5h 7% · 7d 6% in 3h 9min". */
-export const formatPanelText = (usage, displayMode, elapsedSeconds, tr = (s) => s) => {
+export const formatPanelText = (usage, displayMode, elapsedSeconds, tr = (s) => s, panelDisplay = "full") => {
   if (!usage) return "";
   const parts = [];
   let resetSeconds = null;
-  for (const tier of ["primary", "secondary"]) {
+  for (const tier of panelDisplay === "compact" ? ["primary"] : ["primary", "secondary"]) {
     const win = usage[tier];
     if (!win || win.usedPercent === undefined) continue;
     // Placeholder tiers (e.g. OpenRouter's balance) aren't usage windows.
@@ -174,12 +174,12 @@ export const formatPanelText = (usage, displayMode, elapsedSeconds, tr = (s) => 
     const percent = Math.round(displayMode === "remaining" ? 100 - used : used);
     const hours = Math.round((win.windowSeconds || 0) / 3600);
     const label = !hours ? "" : hours < 24 ? `${hours}h` : `${Math.round(hours / 24)}d`;
-    parts.push(label ? `${label} ${percent}%` : `${percent}%`);
+    parts.push(label && panelDisplay !== "compact" ? `${label} ${percent}%` : `${percent}%`);
     if (resetSeconds === null) resetSeconds = (win.resetAfterSeconds || 0) - (elapsedSeconds || 0);
   }
   if (parts.length > 0) {
     let text = parts.join(" · ");
-    if (resetSeconds > 0) text += fill(tr(" in %s"), formatDuration(resetSeconds));
+    if (panelDisplay === "full" && resetSeconds > 0) text += fill(tr(" in %s"), formatDuration(resetSeconds));
     return text;
   }
 

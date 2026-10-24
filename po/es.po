@@ -614,3 +614,19 @@ msgstr "Caduca el %s"
 #, javascript-format
 msgid " in %s"
 msgstr " en %s"
+
+#: prefs.js:437
+msgid "Panel Display"
+msgstr "Visualización en el panel"
+
+#: prefs.js:439
+msgid "Compact (primary only)"
+msgstr "Compacta (solo principal)"
+
+#: prefs.js:439
+msgid "Primary + Secondary"
+msgstr "Principal + Secundaria"
+
+#: prefs.js:439
+msgid "Full (including reset)"
+msgstr "Completa (incluye el reinicio)"

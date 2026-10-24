@@ -433,6 +433,18 @@ const CodexBarPrefsPage = GObject.registerClass(
       });
       group.add(displayModeRow);
 
+      const panelDisplayRow = new Adw.ComboRow({
+        title: _("Panel Display"),
+        model: new Gtk.StringList({
+          strings: [_("Compact (primary only)"), _("Primary + Secondary"), _("Full (including reset)")],
+        }),
+        selected: this._settings.get_enum("panel-display"),
+      });
+      panelDisplayRow.connect("notify::selected", () => {
+        this._settings.set_enum("panel-display", panelDisplayRow.selected);
+      });
+      group.add(panelDisplayRow);
+
       const languageRow = new Adw.ComboRow({
         title: _("Language"),
         // Language names stay in their own language, so no gettext here.
